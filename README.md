@@ -13,10 +13,10 @@ Prerequisites
 Kubernetes requires a secret to pull images from private registries. Run the following command:
 
 kubectl create secret docker-registry <secret-name> \
---docker-server=<registry-url> \
---docker-username=<username> \
---docker-password=<password> \
---docker-email=<email>
+--docker-server=*registry-url* \
+--docker-username=*username* \
+--docker-password=*password* \
+--docker-email=*email*
 
 ### If your image is found on Docker Hub:
 
@@ -29,11 +29,11 @@ kubectl create secret docker-registry my-registry-key \
 ### For AWS ECR images, use:
 
 kubectl create secret docker-registry my-registry-key \
---docker-server=https://<aws-account-id>.dkr.ecr.<region>.amazonaws.com \
+--docker-server=https://**aws-account-id**.dkr.ecr.**region**.amazonaws.com \
 --docker-username=AWS \
---docker-password=<password>
+--docker-password=**password**
 
-<password> can be generated using :
+**password** can be generated using :
  
     ***aws ecr get-login-password*** 
 which is gotten from your AWS ECR push commands
@@ -50,5 +50,5 @@ Apply the deployment:
 
 If the pod fails to pull the image, check logs:
 
-kubectl describe pod <pod-name>
-or kubectl logs <pod-name>
+kubectl describe pod ***pod-name***
+or kubectl logs ***pod-name***
